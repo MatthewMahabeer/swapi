@@ -1,0 +1,718 @@
+.container {
+  position: relative;
+  height: 100vh;
+  width: 90%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 35px;
+}
+
+.titlecontainer {
+  position: relative;
+  height: 32px;
+  display: flex;
+  width: 100%;
+}
+
+.allcards {
+  padding: 0 14px;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  text-align: center;
+  background: white;
+  border-radius: 4px;
+  gap: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.allcards2 {
+  padding: 0 14px;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  text-align: center;
+  background: #EDEDED;
+  border-radius: 4px;
+  gap: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.pagedivider {
+  margin-top: 15px;
+  border: hidden;
+  background: #B8B8B8;
+  border-radius: 2px;
+  height: 3px;
+  width: 100%;
+}
+
+.cardtitle {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  vertical-align: middle;
+}
+
+.pagetitle {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  vertical-align: top;
+  align-self: center;
+  text-align: center;
+  font-family: "Roboto";
+  font-size: 20px;
+}
+
+.namecard {
+  position: relative;
+  height: 100%;
+  align-self: flex-end;
+  padding: 0 14px;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  text-align: center;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.name {
+  margin: auto;
+  display: flex;
+  text-align: center;
+  vertical-align: middle;
+  font-family: "Roboto";
+  font-size: 16px;
+}
+
+.cardnav {
+  margin-top: 40px;
+  flex-direction: row;
+  display: flex;
+  height: 25px;
+  gap: 13px;
+}
+
+.cardnav .cardtitle1 {
+  margin: auto 0;
+  align-self: flex-start;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  vertical-align: middle;
+  color: #757575;
+  cursor: pointer;
+}
+
+.svg {
+  margin: auto 0;
+  align-self: flex-start;
+}
+
+.cardselector {
+  margin: auto 0;
+  align-self: flex-end;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #969696;
+}
+
+.cardselector2 {
+  margin: auto 0;
+  align-self: flex-end;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #3B3B3B;
+}
+
+.filterrow {
+  margin-top: 30px;
+  flex-direction: row;
+  display: flex;
+  height: 32px;
+  gap: 13px;
+}
+
+.filterrow .deckadd {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: 0px;
+  height: 32px;
+  width: 36px;
+  background: white;
+  justify-self: flex-end;
+  display: inline-flex;
+  position: relative;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08), 0px 4px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.filterrow .deckaddinvert {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: 0px;
+  height: 32px;
+  width: 36px;
+  background: #B8B8B8;
+  justify-self: flex-end;
+  display: inline-flex;
+  position: relative;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08), 0px 4px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.deckadd2 {
+  box-sizing: border-box;
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 20px;
+  width: 22px;
+  background: white;
+  justify-self: center;
+  display: inline-flex;
+  position: relative;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08), 0px 4px 6px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search {
+  margin: auto 0;
+  width: 352px;
+  height: 28px;
+  align-self: flex-start;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  border: hidden;
+  padding: 3px 10px;
+  border-radius: 4px;
+  color: #969696;
+}
+
+.cardfilter {
+  flex-direction: row;
+  margin: auto 0;
+  display: flex;
+  height: 32px;
+  gap: 13px;
+}
+
+.filtercomponents {
+  position: relative;
+  border: 1px solid #B8B8B8;
+  box-sizing: border-box;
+  border-radius: 4px;
+  flex-direction: row;
+  display: flex;
+  background: #FFFFFF;
+  padding: 0 10px;
+  height: 32px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.filtercomponents2 {
+  position: relative;
+  border-radius: 4px;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  background: #EDEDED;
+  padding: 0 10px;
+  height: 32px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.filtercomponents .title {
+  margin: auto 0;
+  align-self: flex-start;
+  text-align: center;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  vertical-align: middle;
+  color: #3B3B3B;
+}
+
+.filtercomponents2 .title {
+  margin: auto 0;
+  align-self: flex-start;
+  text-align: center;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  vertical-align: middle;
+  color: #3B3B3B;
+}
+
+.cardholder {
+  margin-top: 25px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  column-gap: 35px;
+  row-gap: 20px;
+  background: blue;
+}
+
+.deckholder {
+  margin-top: 25px;
+  width: 100%;
+  height: 200px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  column-gap: 35px;
+  row-gap: 20px;
+  background: blue;
+}
+
+.decktitle {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  vertical-align: middle;
+}
+
+.deckcardfigure {
+  margin-top: 90px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 48px;
+}
+
+.cardcomp {
+  position: relative;
+  margin-bottom: 15px;
+  width: 216px;
+  height: 282px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.deckcomp {
+  position: relative;
+  display: flex;
+  margin-bottom: 15px;
+  width: 216px;
+  height: 180px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.dctotal {
+  margin-top: 90px;
+  margin-left: auto;
+  margin-right: 5px;
+  font-family: 'Roboto';
+  justify-self: flex-end;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  color: #969696;
+}
+
+.cardcomp2 {
+  position: relative;
+  margin-bottom: 15px;
+  width: 320px;
+  height: 370px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  padding: 15px;
+  overflow-y: scroll;
+}
+
+.cardtop2 {
+  position: absolute;
+  border: transparent;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: #969696;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+  height: 98px;
+}
+
+.cardtop {
+  position: absolute;
+  border: transparent;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background: #969696;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+  height: 98px;
+}
+
+.decktop {
+  position: absolute;
+  border: transparent;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+  height: 98px;
+  background: url('/faction1vectorlarge.svg') top center no-repeat;
+  background-size: 50%;
+  background-position: right 5px center;
+  background-blend-mode: soft-light;
+}
+
+.decktop2 {
+  position: absolute;
+  border: transparent;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+  height: 98px;
+  background: url('/faction2final.svg') top center no-repeat;
+  background-size: 50%;
+  background-position: right 5px center;
+  background-blend-mode: soft-light;
+}
+
+.decktop3 {
+  position: absolute;
+  border: transparent;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+  height: 98px;
+  background: url('/faction3final.svg') top center no-repeat;
+  background-size: 50%;
+  background-position: right 5px center;
+  background-blend-mode: soft-light;
+}
+
+.decktop4 {
+  position: absolute;
+  border: transparent;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  top: 0;
+  right: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 100%;
+  height: 98px;
+  background: url('/svg7q.svg') top center no-repeat;
+  background-size: 50%;
+  background-position: right 5px center;
+  background-blend-mode: soft-light;
+}
+
+.deckselector {
+  display: flex;
+  position: relative;
+  align-content: center;
+  justify-content: center;
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border-radius: 4px;
+  width: 36px;
+  height: 32px;
+  z-index: 9;
+}
+
+.deletedeck {
+  display: flex;
+  position: relative;
+  align-content: center;
+  justify-content: center;
+  align-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  box-sizing: border-box;
+  background: #742A2A;
+  border-radius: 4px;
+  width: 36px;
+  height: 32px;
+  z-index: 9;
+}
+
+.deckselector .svgdeckselector {
+  display: block;
+  margin: auto;
+  align-self: center;
+  justify-self: center;
+}
+
+.deckadd .svgdeckselector {
+  display: block;
+  margin: auto;
+  align-self: center;
+  justify-self: center;
+}
+
+.deckaddinvert .svgdeckselector {
+  display: block;
+  margin: auto;
+  align-self: center;
+  justify-self: center;
+}
+
+.deckadd2 .svgdeckselector {
+  display: inline-flex;
+  align-self: center;
+  justify-self: center;
+}
+
+
+.cardtop .cardname {
+  margin-top: 17px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.decktop .deckname {
+  margin-top: 17px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.decktop2 .deckname {
+  margin-top: 17px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.decktop3 .deckname {
+  margin-top: 17px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.decktop4 .deckname {
+  margin-top: 17px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cardtop2 .cardname {
+  margin-top: 17px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.specierow {
+  margin-top: 6rem;
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  width: 100%;
+  height: 25px;
+}
+
+.speciesvg {
+  display: flex;
+  margin: auto 0;
+  align-self: center;
+  justify-self: center;
+}
+
+.specietype {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  display: flex;
+  margin: auto 5px;
+  align-self: center;
+  justify-self: center;
+}
+
+.species {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  display: flex;
+  align-self: flex-end;
+  color: #3B3B3B;
+  margin: auto 5px auto auto;
+  align-self: center;
+  justify-self: center;
+}
+
+.carddivider {
+  margin-top: 2px;
+  width: 100%;
+  height: 2px;
+  border: hidden;
+  background: #D4D4D4;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+
+.statpad {
+  box-sizing: border-box;
+  height: 32px;
+  width: 100%;
+  display: flex;
+  margin-top: 10px;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px;
+  gap: 10px;
+  background: #E4E4E4;
+  border-radius: 4px;
+}
+
+.statpad .padtype {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #757575;
+}
+
+.statpad .value {
+  font-family: 'Roboto';
+  margin: auto 0 auto auto;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: right;
+}
+
+.loader {
+  margin: 20% auto auto 50%;
+}
+
+.deckemptymessage {
+  display: inline-flex;
+  width: 100%;
+  margin-top: 30px;
+  flex-direction: column;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
+  color: #3B3B3B;
+  white-space: nowrap;
+}
+
+.last {
+  white-space: no-wrap;
+
+  /* Make sure last word and icon will break ultimately */
+  display: inline-flex;
+}
