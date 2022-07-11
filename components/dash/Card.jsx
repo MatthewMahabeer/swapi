@@ -129,7 +129,7 @@ const Card = () => {
                     return (
                         <div key={index} className={styles.statpad}>
                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_31_10650)">
+                                <g clipPath="url(#clip0_31_10650)">
                                     <path d="M5 13H3.5V9.5C3.5 7.015 5.515 5 8 5C10.485 5 12.5 7.015 12.5 9.5V13H11" stroke="#3B3B3B" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M3.5 3H6" stroke="#3B3B3B" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M12.5 3H10" stroke="#3B3B3B" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
@@ -153,7 +153,7 @@ const Card = () => {
                     return (
                         <div key={index} className={styles.statpad}>
                             <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_31_7343)">
+                                <g clipPath="url(#clip0_31_7343)">
                                     <path d="M10.084 2.341L14.143 6.4" stroke="#3B3B3B" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M8.49188 3.22399C6.49788 2.36499 4.09688 2.74999 2.46788 4.37899C2.13388 4.71299 1.85888 5.08199 1.62988 5.46999L3.96988 7.80999" stroke="#3B3B3B" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                     <path d="M13.2659 7.97301C14.1459 9.97401 13.7609 12.393 12.1219 14.032C11.7879 14.366 11.4189 14.641 11.0299 14.871L8.67993 12.521" stroke="#3B3B3B" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />

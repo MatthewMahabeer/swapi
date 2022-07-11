@@ -124,7 +124,7 @@ const Cards = () => {
                 </div>
                 <AddDeckPopover ref={addDeckRef} />
             </div>
-            {decks.length == 0 ?
+            {decks?.length == 0 ?
             <div className={styles.deckemptymessage}>
                 <span>
                     No Decks Created. Please create a Deck by pressing the Add Deck

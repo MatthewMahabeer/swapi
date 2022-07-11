@@ -294,7 +294,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: auto auto auto auto auto;
-  column-gap: 35px;
+  column-gap: 30px;
   row-gap: 20px;
   background: blue;
 }

@@ -124,7 +124,7 @@ const CardComponent = (props) => {
                         <div className={styles.cardname}>
                             {props.person.name}
                         </div>
-                        <DeckContextMenu ref={deckMenuRef} />
+                        <DeckContextMenu ref={deckMenuRef} card={props.person} />
                     </div>
                     <div className={styles.specierow}>
                         <svg className={styles.speciesvg} width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -203,16 +203,16 @@ const CardComponent = (props) => {
                             <div className={styles.decktitle}>
                                 <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
                                     <svg
-                                     width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8 1.99998L15.5 6.49998L8 11L0.5 6.49998L8 1.99998Z" stroke="white" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                         <path d="M14 9.59999L15.5 10.5L8 15L0.5 10.5L2 9.59999" stroke="white" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
                                     <div style={props.deck.faction == 'faction1' ? deleteStyles.faction1 : props.deck.faction == 'faction2' ? deleteStyles.faction2 : props.deck.faction == 'faction3' ? deleteStyles.faction3 : props.deck.faction == 'faction4' ? deleteStyles.faction4 : ''}>
-                                        <svg style={{margin: 'auto'}} width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <g clip-path="url(#clip0_13_1136)">
-                                                <path d="M0.5 2.99998H11.5" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M4.5 2.99998V0.999985H7.5V2.99998" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M9.5 4.99998V11C9.5 11.2652 9.39464 11.5196 9.20711 11.7071C9.01957 11.8946 8.76522 12 8.5 12H3.5C3.23478 12 2.98043 11.8946 2.79289 11.7071C2.60536 11.5196 2.5 11.2652 2.5 11V4.99998" stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                        <svg style={{ margin: 'auto' }} width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clipPath="url(#clip0_13_1136)">
+                                                <path d="M0.5 2.99998H11.5" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                                                <path d="M4.5 2.99998V0.999985H7.5V2.99998" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
+                                                <path d="M9.5 4.99998V11C9.5 11.2652 9.39464 11.5196 9.20711 11.7071C9.01957 11.8946 8.76522 12 8.5 12H3.5C3.23478 12 2.98043 11.8946 2.79289 11.7071C2.60536 11.5196 2.5 11.2652 2.5 11V4.99998" stroke="white" strokeLinecap="round" strokeLinejoin="round" />
                                             </g>
                                             <defs>
                                                 <clipPath id="clip0_13_1136">
@@ -229,7 +229,7 @@ const CardComponent = (props) => {
                             </div>
                         </div>
                         <div className={styles.deckcardfigure}>
-                            {props.deck.cards.length}
+                            {props.deck?.cards?.length}
                         </div>
                         <div className={styles.dctotal}>
                             total cards

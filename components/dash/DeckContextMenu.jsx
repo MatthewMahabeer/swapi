@@ -1,12 +1,31 @@
 import React, {useImperativeHandle, useState, forwardRef, useEffect} from 'react';
 import { isEmpty } from 'lodash';
 import { deckList } from './Cards';
-import { useAtom } from 'jotai';
+import { atom, useAtom } from 'jotai';
+
+const deckOperatorAtom = atom(null);
+
+const updateDeckAtom = atom(
+   null,
+    (get, set, _update) => {
+        const deckArray = get(deckList);
+        const index = deckArray.findIndex(d => d.name == get(deckOperatorAtom).name);
+        const newDeckArray = [...deckArray];
+        newDeckArray[index] = { ...newDeckArray[index], cards: [...newDeckArray[index].cards, get(cardAtom)] };
+        set(deckList, newDeckArray);
+    }
+);
+
+const cardAtom = atom(null);
 
 const DeckContextMenu = (props, ref) => {
 
     const [menuState, setMenuState] = useState(false);
     const [decks] = useAtom(deckList);
+    const [card, setCard] = useAtom(cardAtom);
+    const [, setUpdateDeck] = useAtom(updateDeckAtom);
+    const [, setDeckOperator] = useAtom(deckOperatorAtom);
+
 
     useImperativeHandle(ref, () => ({
         toggleMenu: () => {
@@ -15,13 +34,17 @@ const DeckContextMenu = (props, ref) => {
         close: () => {
             setMenuState(false);
         },
-        addCard: (card) => {
-            
-        }
     }));
 
     if(!menuState) {
         return null;
+    }
+
+    const addCardToDeck = (card, deck) => {
+        setCard(card);
+        setDeckOperator(deck);
+        setUpdateDeck()
+
     }
 
     return (
@@ -38,7 +61,7 @@ const DeckContextMenu = (props, ref) => {
                 </div>
                 : decks.map(deck => {
                     return ( 
-                        <div className='deck-menu__item'>
+                        <div className='deck-menu__item' onClick={() => addCardToDeck(props.card, deck)}>
                             {deck.name}
                         </div>
                     )
