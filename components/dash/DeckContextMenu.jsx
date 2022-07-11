@@ -44,7 +44,7 @@ const DeckContextMenu = (props, ref) => {
         setCard(card);
         setDeckOperator(deck);
         setUpdateDeck()
-
+        ref.current.close();
     }
 
     return (
