@@ -3,8 +3,8 @@ import styles from "../../styles/Home.module.css";
 import { node } from '../../pages/api/apiHandler';
 import { atom, useAtom } from 'jotai';
 import { isEmpty } from 'lodash';
-import DeckContextMenu from './DeckContextMenu';
-import { personAtom } from './Cards';
+import DeckContextMenu, { deckOperatorAtom } from './DeckContextMenu';
+import { personAtom, deckList } from './Cards';
 import { cardPageState, deckPageState } from './header';
 
 const deleteStyles = {
@@ -63,12 +63,26 @@ const deleteStyles = {
 
 }
 
+const deleteDeckAtom = atom(
+    null,
+    (get, set, _update) => {
+        const deck = get(deckOperatorAtom);
+        if(deck){
+            set(deckList, (prev) =>
+             prev.filter((deckItem) => deckItem !== deck));
+            set(deckOperatorAtom, null);
+        }
+    }
+);
+
 const CardComponent = (props) => {
     const [specie, setSpecie] = useState(null);
     const [homeworld, setHomeworld] = useState(null);
     const [cardState, setCardState] = useAtom(cardPageState);
     const [deckState] = useAtom(deckPageState);
     const [, setPerson] = useAtom(personAtom);
+    const [, setDeckOperator] = useAtom(deckOperatorAtom);
+    const [, setDeleteDeck] = useAtom(deleteDeckAtom);
 
     const deckMenuRef = useRef();
 
@@ -95,10 +109,15 @@ const CardComponent = (props) => {
         }
     }, [])
 
+    const removeDeck = (deck) => {
+        setDeckOperator(deck);
+        setDeleteDeck();
+    }
+
     return (
         <React.Fragment>
             {cardState ?
-                <div className={styles.cardcomp}>
+                <div className={styles.cardcomp} >
                     <div className={styles.cardtop}>
                         <div className={styles.cardtitle}>
                             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
@@ -113,7 +132,7 @@ const CardComponent = (props) => {
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <div onClick={toggle} className={styles.deckselector}>
+                                <div onClick={(toggle)} className={styles.deckselector}>
                                     <svg className={styles.svgdeckselector} width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6 1.49998V11.5" stroke="#3B3B3B" strokeLinecap="round" strokeLinejoin="round" />
                                         <path d="M1 6.49998H11" stroke="#3B3B3B" strokeLinecap="round" strokeLinejoin="round" />
@@ -126,6 +145,7 @@ const CardComponent = (props) => {
                         </div>
                         <DeckContextMenu ref={deckMenuRef} card={props.person} />
                     </div>
+                    <div onClick={() => setPerson(props?.person)}>
                     <div className={styles.specierow}>
                         <svg className={styles.speciesvg} width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.125 1.625H10.875V5.375" stroke="#3B3B3B" strokeLinecap="round" strokeLinejoin="round" />
@@ -195,13 +215,15 @@ const CardComponent = (props) => {
                         <div className={styles.padtype}>Starships</div>
                         <div className={styles.value}>{props.person.starships.length}</div>
                     </div>
+                    </div>
                 </div>
                 : deckState ?
                     <div className={styles.deckcomp}>
                         <div style={props.deck.faction == 'faction1' ? { backgroundColor: '#C53030' } : props.deck.faction == 'faction2' ? { backgroundColor: '#2F855A' } : props.deck.faction == 'faction3' ? { backgroundColor: '#3B3B3B' } : props.deck.faction == 'faction4' ? { backgroundColor: '#969696' } : ''} className={props.deck.faction == 'faction1' ? styles.decktop : props.deck.faction == 'faction2' ? styles.decktop2 : props.deck.faction == 'faction3' ? styles.decktop3 : styles.decktop4}>
                             <div className={styles.deckbg}></div>
                             <div className={styles.decktitle}>
-                                <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
+                                <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}  onClick={() => removeDeck(props.deck)}
+                                >
                                     <svg
                                         width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M8 1.99998L15.5 6.49998L8 11L0.5 6.49998L8 1.99998Z" stroke="white" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />

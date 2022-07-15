@@ -144,7 +144,7 @@ const Cards = () => {
                     <CardComponent key={index} deck={deck} />
                     )
                 })
-            };
+            }
                 </div>
 }
         </div> : ''
