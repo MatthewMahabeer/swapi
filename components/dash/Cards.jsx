@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import styles from "../../styles/Home.module.css";
-import CardComponent from './CardComponent';
+import CardComponent, { singleDeck } from './CardComponent';
 import Card from './Card';
 import { useQuery } from 'react-query';
 import { fetchPeople, filterPeople } from "../../pages/api/apiHandler";
@@ -13,10 +13,9 @@ import { isEmpty } from 'lodash';
 
 export const personAtom = atom(null);
 export const deckList = atom([]);
-
 export const factionSelected = atom(null);
-
 export const deckMenuStatus = atom(false);
+
 
 const Cards = () => {
     const [sorterVariable, setSorterVariable] = React.useState("alph");
@@ -28,6 +27,7 @@ const Cards = () => {
     const addDeckRef = useRef();
     const [cardPage] = useAtom(cardPageState);
     const [deckPage] = useAtom(deckPageState);
+    const [chosenDeck] = useAtom(singleDeck);
 
     const toggleMenu = () => {
         addDeckRef.current.toggleMenu();
@@ -125,6 +125,7 @@ const Cards = () => {
                 <AddDeckPopover ref={addDeckRef} />
             </div>
             {decks?.length == 0 ?
+            <div>
             <div className={styles.deckemptymessage}>
                 <span>
                     No Decks Created. Please create a Deck by pressing the Add Deck
@@ -136,15 +137,32 @@ const Cards = () => {
                     </div>
                     button above.
                 </span>
+            </div> : 
+
             </div>
             : <div className={styles.cardholder}>
                 {!isEmpty(decks) &&
+                chosenDeck == null ? (
                 decks.map((deck, index) => {
                     return (
                     <CardComponent key={index} deck={deck} />
                     )
                 })
-            }
+                ) : chosenDeck != null ? (
+                    chosenDeck.cards.map((card, index) => {
+                        return (
+                            <CardComponent key={index} card={card} />
+                        )
+                    }
+                    )) :
+                    chosenDeck != null && chosenDeck.cards.length == 0 ? (
+                        <div className={styles.deckemptymessage}>
+                            <span>
+                                No Cards in Deck. Please add cards to the deck.
+                            </span>
+                        </div>
+                    ) : 
+                    ''}
                 </div>
 }
         </div> : ''
