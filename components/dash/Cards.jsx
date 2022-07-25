@@ -149,13 +149,13 @@ const Cards = () => {
                     )
                 })
                 ) : chosenDeck != null ? (
-                    chosenDeck.cards.map((card, index) => {
+                    chosenDeck?.cards?.map((deckCard, index) => {
                         return (
-                            <CardComponent key={index} card={card} />
+                            <CardComponent key={index} deckCard={deckCard} />
                         )
                     }
                     )) :
-                    chosenDeck != null && chosenDeck.cards.length == 0 ? (
+                    chosenDeck != null && chosenDeck?.cards?.length == 0 ? (
                         <div className={styles.deckemptymessage}>
                             <span>
                                 No Cards in Deck. Please add cards to the deck.

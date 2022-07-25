@@ -3,12 +3,14 @@ import styles from "../../styles/Home.module.css";
 import Cards, {personAtom} from './Cards';
 import { useAtom } from 'jotai';
 import { cardPageState, deckPageState } from './header';
+import {singleDeck} from './CardComponent';
 
 function AllCards() {
 
     const [person, setPerson] = useAtom(personAtom);
     const [cardPage, setCardPage] = useAtom(cardPageState);
     const [deckPage, setDeckPage] = useAtom(deckPageState);
+    const [deck, setDeck] = useAtom(singleDeck);
 
     return (
         <div>
@@ -30,15 +32,19 @@ function AllCards() {
             }
         </div>
         : deckPage ?     <div className={styles.cardnav}>
-        <div className={styles.cardtitle1}>
+        <div className={styles.cardtitle1} onClick={() => setDeck(null)}>
             All Decks
         </div>
         <svg className={styles.svg} width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.5 0.5L6.5 6L0.5 11.5" stroke="#444444" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
+        {deck == null ?
         <div className={styles.cardselector}>
             Select a deck
+        </div> : <div className={styles.cardselector2}>
+            {deck.name}
         </div>
+}
     </div> : ''
 }
        <Cards /> 
