@@ -9,7 +9,7 @@ import { cardPageState, deckPageState } from './header';
 
 export const singleDeck = atom(null);
 const cardOperator = atom(null);
-
+const cardsInDeck = atom(null);
 
 const deleteStyles = {
     faction1: {
@@ -85,15 +85,29 @@ const removeCardFromDeck = atom(
     const deck = get(singleDeck);
     const card = get(cardOperator);
     const decks = get(deckList);
-    const index = decks.findIndex(d => d.name === deck.name);
-    //const newDeckArray = [...decks];
+    console.log(deck);
+    const index = decks.findIndex(d => d.name == deck.name);
+    console.log(index);
+  //  const newDeckArray = [...decks];
+  //  newDeckArray[index] = { ...newDeckArray[index], cards: newDeckArray[index].cards.filter(c => c.name !== card.name) };
     if(deck && card) {
-        set(deckList, (prev) =>
-        console.log(prev));
-           // prev[index].cards?.filter((cardItem) => cardItem?.name !== card?.name));
+        set(deckList, (prev) => {
+            if(card !== null) {
+                return prev[index]?.cards.filter(c => c.name !== card.name);
+            }
+        });
     }
     }
 )
+
+const rm2 = atom(
+    null,
+    (get, set, _update) => {
+        const card = get(cardOperator);
+        const cards = get(cardsInDeck);
+        
+    }
+);
 
 const CardComponent = (props) => {
     const [specie, setSpecie] = useState(null);
@@ -106,6 +120,7 @@ const CardComponent = (props) => {
     const [chosenDeck, setChosenDeck] = useAtom(singleDeck);
     const [, deleteDeckCard] = useAtom(removeCardFromDeck);
     const [cardAtom, setCardAtom] = useAtom(cardOperator);
+    const [, setCardsInDeck] = useAtom(cardsInDeck);
 
 
     const deckMenuRef = useRef();
@@ -155,6 +170,11 @@ const deleteCardFromDeck = (card) => {
     setCardAtom(card);
     deleteDeckCard();
 }
+
+ function selectDeck(deck){
+    setChosenDeck(deck);
+    setCardsInDeck(deck?.cards);
+ }
 
     return (
         <React.Fragment>
