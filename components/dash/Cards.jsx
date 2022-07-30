@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import styles from "../../styles/Home.module.css";
-import CardComponent, { singleDeck } from './CardComponent';
+import CardComponent, { singleDeck, cardsInDeck } from './CardComponent';
 import Card from './Card';
 import { useQuery } from 'react-query';
 import { fetchPeople, filterPeople } from "../../pages/api/apiHandler";
@@ -28,6 +28,7 @@ const Cards = () => {
     const [cardPage] = useAtom(cardPageState);
     const [deckPage] = useAtom(deckPageState);
     const [chosenDeck] = useAtom(singleDeck);
+    const [cards_in_deck] = useAtom(cardsInDeck);
 
     const toggleMenu = () => {
         addDeckRef.current.toggleMenu();
@@ -149,7 +150,7 @@ const Cards = () => {
                     )
                 })
                 ) : chosenDeck != null ? (
-                    chosenDeck?.cards?.map((deckCard, index) => {
+                    cards_in_deck?.map((deckCard, index) => {
                         return (
                             <CardComponent key={index} deckCard={deckCard} />
                         )

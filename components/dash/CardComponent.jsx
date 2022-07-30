@@ -9,6 +9,7 @@ import { cardPageState, deckPageState } from './header';
 
 export const singleDeck = atom(null);
 const cardOperator = atom(null);
+export const cardsInDeck = atom(null);
 
 
 const deleteStyles = {
@@ -85,13 +86,13 @@ const removeCardFromDeck = atom(
     const deck = get(singleDeck);
     const card = get(cardOperator);
     const decks = get(deckList);
-    const index = decks.findIndex(d => d.name === deck.name);
-    //const newDeckArray = [...decks];
-    if(deck && card) {
-        set(deckList, (prev) =>
-        console.log(prev));
-           // prev[index].cards?.filter((cardItem) => cardItem?.name !== card?.name));
-    }
+    const index = get(deckList).findIndex(d => d.name == get(singleDeck).name);
+    const newDeckArray = [...decks];
+    newDeckArray[index] = {...newDeckArray[index], cards: newDeckArray[index].cards.filter(c => c.name !== card.name)};
+    //console.log(get(deckList)[index]);
+    //console.log(card);
+        set(deckList, newDeckArray)
+        set(cardsInDeck, newDeckArray[index].cards);
     }
 )
 
@@ -106,6 +107,7 @@ const CardComponent = (props) => {
     const [chosenDeck, setChosenDeck] = useAtom(singleDeck);
     const [, deleteDeckCard] = useAtom(removeCardFromDeck);
     const [cardAtom, setCardAtom] = useAtom(cardOperator);
+    const [cards_in_deck, setCardsInDeck] = useAtom(cardsInDeck);
 
 
     const deckMenuRef = useRef();
@@ -150,6 +152,11 @@ const CardComponent = (props) => {
         setDeleteDeck();
         console.log("I am running")
     }
+
+const selectDeck = (deck) => {
+    setChosenDeck(deck);
+    setCardsInDeck(deck?.cards);
+}
 
 const deleteCardFromDeck = (card) => {
     setCardAtom(card);
@@ -260,7 +267,7 @@ const deleteCardFromDeck = (card) => {
                     </div>
                 </div>
                 : deckState && chosenDeck == null ?
-                    <div className={styles.deckcomp} onClick={() => setChosenDeck(props.deck)}>
+                    <div className={styles.deckcomp} onClick={() => selectDeck(props.deck)}>
                         <div style={props.deck.faction == 'faction1' ? { backgroundColor: '#C53030' } : props.deck.faction == 'faction2' ? { backgroundColor: '#2F855A' } : props.deck.faction == 'faction3' ? { backgroundColor: '#3B3B3B' } : props.deck.faction == 'faction4' ? { backgroundColor: '#969696' } : ''} className={props.deck.faction == 'faction1' ? styles.decktop : props.deck.faction == 'faction2' ? styles.decktop2 : props.deck.faction == 'faction3' ? styles.decktop3 : styles.decktop4}>
                             <div className={styles.deckbg}></div>
                             <div className={styles.decktitle}>
